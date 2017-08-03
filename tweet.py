@@ -11,13 +11,16 @@ file_name='<読み込み先>'
 #ファイルを読みに行く間隔
 sleep_time=<秒単位で指定>
 
+#ここより下は分かる人のみ弄って下さい
+#--------------------------------------------------------------------------------------------------
+
+#必要なプラグインをインポート
+from requests_oauthlib import OAuth1Session
+import time
+
 #投稿先URL
 url = "https://api.twitter.com/1.1/statuses/update.json"
 
-#ここより下は分かる人のみ弄って下さい
-#--------------------------------------------------------------------------------------------------
-from requests_oauthlib import OAuth1Session
-import time
 
 tweeted_text="initialize"
 new_tweet_text="initialize"
