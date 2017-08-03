@@ -47,12 +47,8 @@ while(num==0):
   #前回読み込んだファイルと付きあわせて、変更されていればツイートして、ツイート内容をtweeted_textに保存する
   if new_tweet_text!=tweeted_text:
     tweeted_text=new_tweet_text
-    if len.(new_tweet_text.encode("UTF-8"))<=140:
-      tweet(new_tweet_text)
-      load_file.close()
-    else:
-      load_file.close()
-      print("140文字を超えているため、ツイートしませんでした。")
+    tweet(new_tweet_text)
+    load_file.close()
   else:
     load_file.close()
     print("ファイルの内容が前回ツイートと同じだったので、ツイートしませんでした。")
