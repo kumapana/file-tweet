@@ -3,6 +3,9 @@
 from requests_oauthlib import OAuth1Session
 import time
 
+from datetime import datetime
+datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+
 tweeted_text="initialize"
 new_tweet_text="initialize"
 
@@ -44,8 +47,13 @@ while(num==0):
 
   #前回読み込んだファイルと付きあわせて、変更されていればツイートする
   if new_tweet_text!=tweeted_text:
-    tweet(new_tweet_text)
-    load_file.close()
+    if len.(new_tweet_text.encode("UTF-8"))<=140:
+      tweet(new_tweet_text)
+      load_file.close()
+    else:
+      load_file.close()
+      print("140文字を超えているため、ツイートしませんでした。")
+      return 1
   else:
     load_file.close()
   time.sleep(30) 
