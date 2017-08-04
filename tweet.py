@@ -17,6 +17,7 @@ sleep_time=<秒単位で指定>
 #必要なプラグインをインポート
 from requests_oauthlib import OAuth1Session
 import time
+from collections import Counter
 
 #投稿先URL
 url = "https://api.twitter.com/1.1/statuses/update.json"
@@ -49,9 +50,12 @@ while(num==0):
 
   #前回読み込んだファイルと付きあわせて、変更されていればツイートして、ツイート内容をtweeted_textに保存する
   if new_tweet_text!=tweeted_text:
-    tweeted_text=new_tweet_text
-    tweet(new_tweet_text)
-    load_file.close()
+    if len(new_tweet_text)<=140:
+      tweeted_text=new_tweet_text
+      tweet(new_tweet_text)
+      load_file.close()
+    else:
+      print("文字数が140字を超えているため、ツイートしませんでした。")
   else:
     load_file.close()
     print("ファイルの内容が前回ツイートと同じだったので、ツイートしませんでした。")
